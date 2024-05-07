@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,6 +18,7 @@ public class SiteController {
     private final static String weatherApiAddress = "https://api.open-meteo.com/v1/forecast";
     private final static String forecastParameters = "daily=weather_code,temperature_2m_max,temperature_2m_min,sunshine_duration&timezone=auto";
 
+    @CrossOrigin(origins = "https://weather-service-site.onrender.com/")
     @GetMapping(value = "/forecast")
     @ResponseBody
     public List<DailyForecast> homePage(
